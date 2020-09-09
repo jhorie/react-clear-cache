@@ -9,7 +9,7 @@ const App = () => {
   return (
     <div className="App">
       <header className="App-header">
-        <p>123212asd
+        <p>
           <img src={logo} className="App-logo" alt="logo" />
         </p>
         <p>
