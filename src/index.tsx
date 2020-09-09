@@ -56,7 +56,9 @@ export const useClearCache = (props?: OwnProps) => {
         .then(meta => {
           const newVersion = meta.version;
           const currentVersion = appVersion;
-          const isUpdated = newVersion === currentVersion;
+          const isUpdated = newVersion === currentVersion || appVersion ==='';
+          const loadingTemp = loading;
+          console.log(loadingTemp)
           if (!isUpdated && !auto) {
             setLatestVersion(newVersion);
             setLoading(false);
