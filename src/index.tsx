@@ -74,7 +74,9 @@ export const useClearCache = (props?: OwnProps) => {
             setIsLatestVersion(true);
             setLoading(false);
           }
-        });
+        }).catch(() => {
+        setLoading(false);
+      });
     } catch (err) {
       console.error(err);
     }
