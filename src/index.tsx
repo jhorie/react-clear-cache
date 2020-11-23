@@ -1,14 +1,17 @@
 import * as React from 'react';
 import createPersistedState from 'use-persisted-state';
+import { storageFactory } from './StorageFactory';
 
 const STORAGE_KEY = 'APP_VERSION';
+
+const localStore = storageFactory(() => localStorage);
 
 const defaultProps = {
   duration: 60 * 1000,
   auto: false,
   storageKey: STORAGE_KEY,
   basePath: '',
-  localStore: sessionStorage
+  localStore: localStore
 };
 
 type OwnProps = {
