@@ -7,7 +7,8 @@ const defaultProps = {
   duration: 60 * 1000,
   auto: false,
   storageKey: STORAGE_KEY,
-  basePath: ''
+  basePath: '',
+  localStorage: localStorage
 };
 
 type OwnProps = {
@@ -15,12 +16,12 @@ type OwnProps = {
 } & typeof defaultProps;
 
 export const useClearCache = (props?: OwnProps) => {
-  const { duration, auto, storageKey, basePath } = {
+  const { duration, auto, storageKey, basePath, localStorage } = {
     ...defaultProps,
     ...props
   };
   const [loading, setLoading] = React.useState(true);
-  const useAppVersionState = createPersistedState(storageKey);
+  const useAppVersionState = createPersistedState(storageKey, localStorage);
   const [appVersion, setAppVersion] = useAppVersionState('');
   const [isLatestVersion, setIsLatestVersion] = React.useState(true);
   const [latestVersion, setLatestVersion] = React.useState(appVersion);
